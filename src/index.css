@@ -1,0 +1,665 @@
+
+/* ปุ่มเปิดหน้าต่างสร้างเซิร์ฟเวอร์ */
+.open-create-server {
+  width: 100%;
+  padding: 14px;
+  margin: 15px 0;
+  color: #fff;
+  background: #5865f2;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.open-create-server:hover {
+  background: #4752c4;
+}
+
+/* ฉากหลัง Modal */
+.server-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(5px);
+}
+
+/* หน้าต่างสร้างเซิร์ฟเวอร์ */
+.server-create-modal {
+  width: 100%;
+  max-width: 430px;
+  padding: 24px;
+  box-sizing: border-box;
+  background: #191b24;
+  border: 1px solid #343746;
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  animation: serverModalShow 0.2s ease;
+}
+
+@keyframes serverModalShow {
+  from {
+    opacity: 0;
+    transform: translateY(15px) scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* ส่วนหัว Modal */
+.server-modal-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.server-modal-header h2 {
+  margin: 0;
+  color: #fff;
+  font-size: 22px;
+}
+
+.server-modal-header p {
+  margin: 8px 0 0;
+  color: #aaa;
+  font-size: 13px;
+}
+
+/* ปุ่มปิด */
+.server-modal-close {
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+  color: #fff;
+  background: #292c38;
+  border: none;
+  border-radius: 8px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.server-modal-close:hover {
+  background: #414554;
+}
+
+.server-modal-close:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ฟอร์มสร้างเซิร์ฟเวอร์ใน Modal */
+.server-create-modal .server-create-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  border: none;
+}
+
+.server-create-modal .server-create-form label {
+  color: #fff;
+  font-weight: bold;
+}
+
+.server-create-modal .server-create-form input {
+  width: 100%;
+  padding: 13px;
+  box-sizing: border-box;
+  color: #fff;
+  background: #232530;
+  border: 1px solid #454958;
+  border-radius: 8px;
+  outline: none;
+}
+
+.server-create-modal .server-create-form input:focus {
+  border-color: #5865f2;
+}
+
+.server-modal-hint {
+  margin: 0;
+  color: #999;
+  font-size: 12px;
+}
+
+.server-create-modal .server-create-form button {
+  padding: 13px;
+  color: #fff;
+  background: #5865f2;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.server-create-modal .server-create-form button:hover {
+  background: #4752c4;
+}
+
+.server-create-modal .server-create-form button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* มือถือ */
+@media (max-width: 600px) {
+  .server-modal-overlay {
+    padding: 15px;
+  }
+
+  .server-create-modal {
+    padding: 20px;
+  }
+}
+
+/* =====================================
+   VOICECHATMAX DASHBOARD UI IMPROVEMENT
+===================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+  margin: 0;
+}
+
+body {
+  font-size: 14px;
+  background: #081629;
+}
+
+/* Main layout */
+
+.app-container {
+  width: 100%;
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 250px minmax(0, 1fr);
+  align-items: stretch;
+  gap: 16px;
+  padding: 16px;
+  background: #081629;
+}
+
+/* Profile */
+
+.profile-card {
+  width: 100%;
+  min-width: 0;
+  min-height: calc(100vh - 32px);
+  padding: 20px;
+  border: 1px solid #263f60;
+  border-radius: 14px;
+  background: #101e32;
+  color: #fff;
+}
+
+.profile-heading {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.profile-preview {
+  width: 110px;
+  height: 110px;
+  margin: 0 auto 15px;
+  overflow: hidden;
+  border-radius: 50%;
+  border: 3px solid #287ee8;
+  background: #1a3558;
+}
+
+.profile-preview img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.profile-placeholder {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  color: white;
+  font-size: 38px;
+  font-weight: bold;
+}
+
+.profile-heading h2 {
+  font-size: 18px;
+  margin: 8px 0;
+}
+
+.profile-heading p {
+  font-size: 12px;
+  color: #91a9c9;
+  overflow-wrap: anywhere;
+}
+
+.profile-status {
+  color: #36d69a;
+  font-size: 12px;
+}
+
+.profile-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.profile-form label {
+  color: #b8cce5;
+  font-size: 13px;
+}
+
+.profile-form input {
+  width: 100%;
+  min-width: 0;
+  padding: 11px;
+  border: 1px solid #304d70;
+  border-radius: 8px;
+  background: #0a182b;
+  color: white;
+}
+
+.profile-form button,
+.logout-button {
+  width: 100%;
+  min-height: 40px;
+  border: 0;
+  border-radius: 8px;
+  background: #176be0;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.profile-form button:hover {
+  background: #3289fa;
+}
+
+.profile-hint,
+.profile-message {
+  font-size: 12px;
+  color: #8fa9cb;
+  overflow-wrap: anywhere;
+}
+
+.logout-button {
+  margin-top: 25px;
+  background: #293b55;
+}
+
+.logout-button:hover {
+  background: #3b5272;
+}
+
+/* Dashboard container */
+
+.vc-dashboard {
+  width: 100%;
+  max-width: none;
+  min-width: 0;
+  min-height: calc(100vh - 32px);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid #294565;
+  border-radius: 14px;
+  background: #0c192b;
+  color: #fff;
+  font-size: 14px;
+}
+
+/* Topbar */
+
+.vc-topbar {
+  min-height: 66px;
+  padding: 12px 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #294565;
+  background: #101f34;
+}
+
+.vc-brand-icon {
+  width: 38px;
+  height: 38px;
+  font-size: 22px;
+  border-radius: 10px;
+}
+
+.vc-brand h2 {
+  font-size: 18px;
+}
+
+.vc-brand p {
+  font-size: 10px;
+}
+
+.vc-top-status {
+  font-size: 12px;
+}
+
+/* Workspace */
+
+.vc-workspace {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 230px minmax(0, 1fr);
+}
+
+/* Internal server sidebar */
+
+.vc-sidebar {
+  width: 100%;
+  min-width: 0;
+  padding: 16px 12px;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid #294565;
+  background: #0d1a2c;
+}
+
+.vc-sidebar-title {
+  margin-bottom: 14px;
+  font-size: 14px;
+}
+
+.vc-sidebar-title button {
+  width: 32px;
+  height: 32px;
+  font-size: 20px;
+}
+
+.vc-server-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.vc-server-button {
+  min-height: 48px;
+  padding: 8px;
+  gap: 10px;
+  font-size: 13px;
+}
+
+.vc-server-avatar {
+  width: 34px;
+  height: 34px;
+  font-size: 15px;
+}
+
+.vc-server-name {
+  font-size: 13px;
+}
+
+.vc-add-server {
+  min-height: 42px;
+  margin-top: 12px;
+  font-size: 13px;
+}
+
+.vc-sidebar-footer {
+  margin-top: auto;
+  padding-top: 20px;
+  font-size: 11px;
+}
+
+/* Main content */
+
+.vc-main {
+  min-width: 0;
+  padding: 24px;
+  overflow: auto;
+}
+
+.vc-main-header {
+  margin-bottom: 22px;
+}
+
+.vc-main-header h1 {
+  font-size: 26px;
+  margin-top: 8px;
+}
+
+.vc-breadcrumb {
+  font-size: 11px;
+}
+
+.vc-server-total {
+  font-size: 12px;
+}
+
+/* Server detail */
+
+.vc-server-banner {
+  min-height: 125px;
+  padding: 22px;
+  gap: 18px;
+  border-radius: 12px;
+}
+
+.vc-banner-icon {
+  width: 62px;
+  height: 62px;
+  font-size: 27px;
+}
+
+.vc-server-banner h2 {
+  font-size: 22px;
+  margin: 8px 0;
+}
+
+.vc-label {
+  font-size: 10px;
+  letter-spacing: 1px;
+}
+
+.vc-server-banner p {
+  font-size: 13px;
+}
+
+.vc-detail-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 16px;
+}
+
+.vc-info-card {
+  min-height: 110px;
+  padding: 18px;
+  border-radius: 10px;
+}
+
+.vc-card-icon {
+  font-size: 20px;
+}
+
+.vc-info-card p {
+  font-size: 12px;
+}
+
+.vc-info-card h3 {
+  font-size: 16px;
+}
+
+.vc-invite-card {
+  margin-top: 16px;
+  min-height: 105px;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.vc-invite-card h3 {
+  font-size: 16px;
+  margin: 8px 0;
+}
+
+.vc-invite-card code {
+  font-size: 13px;
+}
+
+.vc-invite-card button {
+  min-height: 38px;
+  padding: 0 18px;
+  font-size: 12px;
+}
+
+.vc-coming-soon {
+  min-height: 190px;
+  margin-top: 16px;
+  padding: 25px;
+  border-radius: 10px;
+}
+
+.vc-coming-icon {
+  font-size: 30px;
+}
+
+.vc-coming-soon h3 {
+  font-size: 18px;
+}
+
+.vc-coming-soon p {
+  font-size: 13px;
+}
+
+.vc-coming-soon span {
+  font-size: 10px;
+}
+
+/* Empty state */
+
+.vc-empty {
+  min-height: 350px;
+  padding: 30px;
+}
+
+.vc-empty h3 {
+  font-size: 21px;
+}
+
+.vc-empty p {
+  font-size: 14px;
+}
+
+.vc-empty button {
+  min-height: 42px;
+  padding: 0 20px;
+}
+
+/* Modal */
+
+.vc-modal {
+  width: min(100% - 30px, 460px);
+  padding: 28px;
+}
+
+.vc-modal h2 {
+  font-size: 22px;
+}
+
+.vc-create-form input {
+  min-height: 44px;
+}
+
+.vc-create-form button {
+  min-height: 44px;
+}
+
+/* Responsive */
+
+@media (max-width: 1000px) {
+  .app-container {
+    grid-template-columns: 210px minmax(0, 1fr);
+  }
+
+  .vc-workspace {
+    grid-template-columns: 190px minmax(0, 1fr);
+  }
+
+  .vc-main {
+    padding: 18px;
+  }
+}
+
+@media (max-width: 700px) {
+  .app-container {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+  }
+
+  .profile-card {
+    min-height: auto;
+  }
+
+  .vc-dashboard {
+    min-height: 750px;
+  }
+
+  .vc-workspace {
+    grid-template-columns: 120px minmax(0, 1fr);
+  }
+
+  .vc-main {
+    padding: 12px;
+  }
+
+  .vc-detail-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .vc-main-header h1 {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 450px) {
+  .vc-workspace {
+    grid-template-columns: 95px minmax(0, 1fr);
+  }
+
+  .vc-sidebar {
+    padding: 10px 6px;
+  }
+
+  .vc-server-name {
+    overflow-wrap: anywhere;
+  }
+
+  .vc-server-banner {
+    padding: 12px;
+  }
+
+  .vc-invite-card {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+}
